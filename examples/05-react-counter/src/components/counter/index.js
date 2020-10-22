@@ -1,36 +1,27 @@
 'use strict'
 
 import React, { PureComponent } from 'react'
-
 import Counter from './counter'
-
+import { connect } from 'react-redux'
 
 class CounterContainer extends PureComponent {
   constructor() {
     super()
-    this.state = {
-      counter: 0
-    }
 
     this.increment = () => {
-      this.setState({
-        counter: this.state.counter + 1
-      })
+      this.props.dispatch({ type: 'INCREMENT' })
     }
 
     this.decrement = () => {
-      this.setState({
-        counter: this.state.counter - 1
-      })
+      this.props.dispatch({ type: 'DECREMENT' })
     }
   }
 
   render () {
-    const { counter } = this.state
-
+    console.log(this.props)
     return (
       <Counter
-        counter={counter}
+        counter={this.props.counter}
         increment={this.increment}
         decrement={this.decrement}
       />
@@ -38,4 +29,10 @@ class CounterContainer extends PureComponent {
   }
 }
 
-export default CounterContainer
+const mapStateToProps = (state) => {
+  return {
+    counter: state
+  }
+}
+
+export default connect(mapStateToProps)(CounterContainer)

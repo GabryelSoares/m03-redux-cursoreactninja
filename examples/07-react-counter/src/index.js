@@ -12,7 +12,6 @@ const counter = (state = 0, action) => {
     case 'INCREMENT': return state + 1
     case 'DECREMENT': return state - 1
   }
-
   return state
 }
 
@@ -21,7 +20,7 @@ const store = createStore(counter)
 const renderApp = (NextApp) => {
   render(
     <AppContainer>
-      <Provider store={store} >
+      <Provider store={store}>
         <NextApp />
       </Provider>
     </AppContainer>,
