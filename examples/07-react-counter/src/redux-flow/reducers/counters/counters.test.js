@@ -14,7 +14,7 @@ it('counters should be a function', () => {
   expect(counters).to.be.a('function')
 })
 
-it('Should add a counter', () => {
+it('Should add a new counter', () => {
   const before = deepFreeze([])
   const action = deepFreeze({ type: ADD_COUNTER })
   const after = [0]
